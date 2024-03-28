@@ -368,6 +368,7 @@ The HE domain and practices could serve as use cases for the developments of dat
 
 
 \subsection{Definition of a HE event in the VO}
+\label{sec:event-bundlle-or-list}
 
 The IVOA standards incude the concept of event-list, for example in ObsCore v1.1 \citep{2017ivoa.spec.0509L}, where event is a dataproduct\_type with the following definition:
 \begin{quote}
@@ -541,16 +542,17 @@ The aim of the Event-list Context Data Model is to name and indicate the relatio
 
 \subsection{Use of Datalink for HE products}
 \label{sec:datalink}
-There are two options to provide an access to a full event-list package.
+There are two options to provide an access to a full event-bundle package.
 
-First, the event-list dataset itself can contain all the relevant information, e.g. several frames in FITS file, one corresponding to the event-list itself, and the other providing good/stable time intervals, or any IRF file. This is what was done in the current GADF data format (see \ref{sec:GADF}).
+In the first option, the "event-bundle" dataset (\ref{sec:event-bundlle-or-list}) exposed in the discovery service  contains all the relevant information, e.g. several frames in the FITS file, one corresponding to the event-list itself, and the others providing good/stable time intervals, or any IRF file. This is what was done in the current GADF data format (see \ref{sec:GADF}). In this option, the content of the event-list package should be properly defined in its description: what information is included and where is it in the dataset structure? Obviously the Event-list Context Data Model (see \ref{sec:EventListContext}) would be useful to provide that.
 
-The second option is to provide links to the relevant information from the base event-list dataset. This could be done using Datalink and a list of link to each contextual information such as the IRFs. The Event-list Context Data Model (see \ref{sec:EventListContext}) would provide the concepts and vocabulary to characterise the IRFs and other information relevant to the analysis of an event-list.
+In the second option we provide links to the relevant information from the base "event-list" (\ref{sec:event-bundlle-or-list}) exposed in the discovery service. This could be done using Datalink and a list of links to each contextual information such as the IRFs. The Event-list Context Data Model (see \ref{sec:EventListContext}) would provide the concepts and vocabulary to characterise the IRFs and other information relevant to the analysis of an event-list. These specific concepts and terms describing the various flavors of IRFs and GTI will be given in the semantics and content\_qualifier FIELDS of the DataLink response to qualify the links. The different links can point to different
+dereferencable URLs or alternbatively to different fragments of the same drefereencable URL as stated by the DataLink specification.
 
-In the first option, The content of the event-list package should be properly defined in its description: what information is included and where is it in the dataset structure? HEre again, the Event-list Context Data Model (see \ref{sec:EventListContext}) would be useful.
+.
 
 
-\todo[inline]{To be completed}
+\todo[inline]{To be completed: show an example ?}
 
 
 
