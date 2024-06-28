@@ -135,16 +135,16 @@ This test data collection has been registered in the VO via a TAP service hosted
 
 \subsection{X-ray programs}
 
-\subsubsection{Chandra}
+\subsubsection{Chandra}\label{sec:chandra}
 
 Part of NASA’s fleet of "Great Observatories", the Chandra X-ray Observatory (CXO) was launched in 1999 to observe the soft X-ray universe in the 0.1 to 10 keV energy band.  Chandra is a guest observer, pointed-observation mission and obtains roughly 800 observations per year using the Advanced CCD Imaging Spectrometer (ACIS) and High Resolution Camera (HRC) instruments.  Chandra provides high angular resolution with a sub-arcsecond on-axis point spread function (PSF), a field of view up to several hundred square arcminutes, and a low instrumental background. The Chandra PSF varies with X-ray energy and significantly with off-axis angle, increasing to R50 $\sim$25 arcsec at the edge of the field of view. A pair of transmission gratings can be inserted into the X-ray beam to provide dispersed spectra with E/DeltaE $\sim$1000 for bright sources.
 The Chandra spacecraft normally dithers in a Lissajous pattern on the sky while taking data, and this motion must be removed from the time-resolved X-ray event lists when constructing X-ray images using the motion of optical guide stars tracked by the Aspect camera.
 
-The Chandra X-ray Center (CXC) processes the spacecraft data through a set of Standard Data Processing Level 0 through Level 2 pipelines.  These pipelines perform numerous steps including decommutating the telemetry data, applying instrument calibrations (e.g., detector geometric, time- dependent gain, and CCD charge transfer efficiency [CTI] corrections, bad and hot pixel flagging), computing and applying the time-resolved Aspect solution to de-dither the motion of the telescope, identifying good time intervals (GTIs), and finally filtering out bad times and X-ray events with bad status.  All data products are archived in the Chandra Data Archive (CDA) in FITS format following HEASARC OGIP standards.  The CDA manages the proprietary data period (currently 6 months, after which the data become public) and provides dedicated interactive and IVOA-compliant interfaces to locate and download datasets.
+The Chandra X-ray Center (CXC) processes the spacecraft data through a set of Standard Data Processing Level 0 through Level 2 pipelines.  These pipelines perform numerous steps including decommutating the telemetry data, applying instrument calibrations (e.g., detector geometric, time- dependent gain, and CCD charge transfer efficiency [CTI] corrections, bad and hot pixel flagging), computing and applying the time-resolved Aspect solution to de-dither the motion of the telescope, identifying good time intervals (GTIs), and finally filtering out bad times and X-ray events with bad status.  All data products are archived in the Chandra Data Archive (CDA) in FITS format following HEASARC OGIP standards;  see also \S~\ref{sec:ogip}.  The CDA manages the proprietary data period (currently 6 months, after which the data become public) and provides dedicated interactive and IVOA-compliant interfaces to locate and download datasets.
 
 The CXC also provides the Chandra Source Catalog, which in the latest release (2.1) includes data for $\sim$407K unique X-ray sources on the sky and more than 2.1 million individual detections and photometric upper limits.  For each X-ray source abd detection, the catalog provides a detailed set of more than 100 tabulated positional, spatial, photometric, spectral, and temporal properties.  An extensive selection of individual observation, stacked-observation, detection region, and master source FITS data products (e.g., RMFs, ARFs, PSFs, spectra, light curves, aperture photometry MPDFs) are also provided that are directly usable for further detailed scientific analysis.
 
-Finally, the CXC distributes the CIAO data analysis package to allow users to recalibrate and analyze their data.  A key aspect of CIAO is to provide users the ability to create instrument responses (RMFs, ARFs, PSFs, instrument and exposure maps, etc.) for their observations using their choice of spectral models and weightings.  The Sherpa modeling and fitting package supports N-dimensional model fitting and optimization in Python, and supports advanced Bayesian Markov chain Monte Carlo analyses.
+Finally, the CXC distributes the CIAO data analysis package to allow users to recalibrate and analyze their data.  A key aspect of CIAO is to provide users the ability to create instrument responses (RMFs, ARFs, PSFs, instrument and exposure maps, etc.) for their observations using their choice of spectral models and weightings.  The Sherpa modeling and fitting package supports N-dimensional model fitting and optimization in Python, and supports advanced Bayesian Markov chain Monte Carlo analyses.  
 
 
 \subsubsection{XMM-Newton}
@@ -263,11 +263,13 @@ In order to produce advanced data products like light curves or spectra, {assump
 \subsection{Data formats}
 \label{sec:data_formats}
 
-\subsubsection{{OGIP}}
+\subsubsection{{OGIP}}\label{sec:ogip}
 
-The HEASARC FITS Working Group, also known as the OGIP (Office of Guest Investigator Programs) FITS Working Group, has promoted multi-mission standards for the format of FITS data files in high-energy astrophysics. Those recommendations\footnote{\url{https://heasarc.gsfc.nasa.gov/docs/heasarc/ofwg/ofwg_recomm.html}} include standards on keyword usage in metadata, on storage of time information, and representation of response function.
+NASA's HEASARC FITS Working Group was part of the Office of Guest Investigator Programs, or OGIP, and created in the 1990's the multi-mission standards for the format of FITS data files in NASA high-energy astrophysics. Those so-called OGIP  recommendations\footnote{\url{https://heasarc.gsfc.nasa.gov/docs/heasarc/ofwg/ofwg_recomm.html}} include standards on keyword usage in metadata, on the storage of spatial, temporal, and spectral (energy) information, and representation of response functions, etc.  These standards predate the IVOA but include such VO concepts as data models, vocabularies, provenance, as well as the corresponding FITS serialization specification.   
 
-\todo[inline]{To be completed}
+The purpose of these standards was to allow all mission data archived by the HEASARC to be stored in the same data format and be readable by the same software tools. \S~\ref{sec:chandra} above, for example, describes the Chandra mission products, but many other smaller projects do so as well.  Because of the OGIP standards, the same software tools can be used on all of the high-energy mission data that follow them.  There are now some thirty plus different mission datasets archived by NASA following these standards and different software tools that can analyze any of them.  
+
+Now that the IVOA is defining data models for spectra and time series, we should be careful to incude the existing OGIP standards as special cases of what re developed to be more general standards for all of astronomy.   
 
 
 \subsubsection{GADF and VODF}
