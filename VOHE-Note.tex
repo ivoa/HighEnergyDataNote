@@ -202,102 +202,195 @@ When observing during an interval of time, the data collected is a list of the d
 
 \subsubsection{Data levels}
 
-After detection of events, data processing steps are applied to generate data products. We typically distinguish at least 3 main data levels. 
+After detection of events, data processing steps are applied to generate data products. We typically distinguish at
+least three main data levels.
 
 \begin{itemize}
-    \item[1] An event-list with calibrated temporal and spatial characteristics, e.g. sky coordinates for a given epoch, event arrival time with time reference, and a proxy for particle energy.
-    \item[2] Binned and/or filtered event list suitable for preparation of science images, spectra or light-curves.  For some instruments, corresponding instrument responses associated with the event-list, calculated but not yet applied (e.g, exposure maps, sensitivity maps, spectral responses).
-    \item[3] Calibrated maps, or spectral energy distributions for a source, or light-curves in physical units.
-    \item[4] An additional data level may correspond to catalogs, e.g. a source catalog pointing to several data products (e.g. collection of L3 products) with each one corresponding to a source. 
+    \item[1] An event-list with calibrated temporal and spatial characteristics, e.g. sky coordinates for a given epoch,
+    event arrival time with time reference, and a proxy for particle energy.
+    \item[2] Binned and/or filtered event list suitable for preparation of science images, spectra or light-curves. For
+    some instruments, corresponding instrument responses associated with the event-list, calculated but not yet applied
+    (e.g, exposure maps, sensitivity maps, spectral responses).
+    \item[3] Calibrated/astrophysical maps, spectral energy distributions for a source, or light-curves in physical units.
+    \item[4] An additional data level may correspond to catalogs, e.g. a source catalog pointing to several data products
+    (e.g. collection of L3/DL5 products) with each one corresponding to a source, catalog of source models generated with
+    a uniform analyse.
 \end{itemize}
 
-However, the definitions of these data levels can vary significantly from facility to facility, and may not map directly to separate ObsCore calib\_levels.  
+However, the definitions of these data levels can vary significantly from facility to facility, and may not map directly
+to separate ObsCore calib\_levels.
 
-For example, in the VHE Cherenkov astronomy domain (e.g. CTA), the data levels listed above are labelled DL3\footnote{events being reconstructed, lower level data is specific this domain (DL0--DL2).} to DL5.  However, for Chandra X-ray data, the first two levels correspond  to L1 and L2 data products (excluding the responses), while transmission-grating data products are designated L1.5 and source catalog and associated data products are all designated L3.
-
+For example, in the VHE Cherenkov astronomy domain (e.g. CTA), the data levels listed above are labeled DL3\footnote{lower
+level data (DL0--DL2), that are specific to the used instrumentation (IACT, WCD), are reconstructed and filtered, which
+constitute the events lists called DL3.} to DL5.  However, for Chandra X-ray data, the first two levels correspond to L1
+and L2 data products (excluding the responses), while transmission-grating data products are designated L1.5 and source
+catalog and associated data products are all designated L3.
 
 \subsubsection{Background signal}
 
-Observations in HE may contain a high background component, that may be due to instrument noises, or to unresolved astrophysical sources, emission from extended regions or other terrestrial sources producing particles similar to the signal. The characterization and estimation of this background may be particularly important to then apply corrections during the analysis of a source signal.
+Observations in HE/VHE may contain a high background component, that may be due to instrument noises, cosmic rays,
+unresolved astrophysical sources, emission from extended regions or other terrestrial sources producing particles similar
+to the signal. The characterization and estimation of this background may be particularly important to apply corrections
+during the analysis of a source signal.
 
-In the VHE domain with the IACT, WCD and neutrino techniques, the background is created by cosmic-ray induced events. The case of unresolved astrophysical sources, emission from extended regions are treated as a model of a gamma-ray or neutrino emission.  In the X-ray domain, contributions to background can include an instrumental component, the local radiation environment (i.e. space weather) which can change dynamically, and may include the cosmological background due to unresolved astrophysical sources, depending on the spatial resolution of the instrument.
-
+In the VHE domain with the IACT, WCD and neutrino techniques, the main source of background at the DL3 level is from
+cosmic-ray induced events. The case of unresolved astrophysical sources, emission from extended regions are treated as
+ models of gamma-ray or neutrino emission. In the X-ray domain, contributions to background can include an instrumental
+component, the local radiation environment (i.e. space weather) which can change dynamically, and may include the
+cosmological background due to unresolved astrophysical sources, depending on the spatial resolution of the instrument.
 
 \subsubsection{Time intervals}
 
-Depending on the stability of the instruments and observing conditions, a HE observation can be decomposed into several intervals of time that will be further analysed.
-For example, Stable Time Intervals (STI) are defined in Cherenkov astronomy to characterize periods of time during which the instrument response is stable. In the X-ray domain, Good Time Intervals (GTI) are computed to exclude time periods where data are missing or invalid, and may be used to reject periods impacted by high radiation, e.g. due to space weather. In contrast, for neutrino physics, relevant observation periods can cover up to several years due to the low statistics of the expected signal and a continuous observational coverage of the full field of view.
+Depending on the stability of the instruments and observing conditions, a HE observation can be decomposed into several
+intervals of time that will be further analysed. For example, Stable Time Intervals (STI) are defined in Cherenkov
+astronomy to characterize periods of time during which the IRFs are stable and under control. In the X-ray domain, Good
+Time Intervals (GTI) are computed to exclude time periods where data are missing or invalid, and may be used to reject
+periods impacted by high radiation, e.g. due to space weather. In contrast, for neutrino detectors or WCDs, relevant
+observation periods can cover up to several years due to the instrument stability.
 
 
 \subsubsection{Instrument Response Functions}
 
-Though an event-list can contain calibrated physical values, typically the data still has to be corrected for the photometric, spectral, spatial, and/or temporal responses of the instruments used to yield scientifically interpretable information. The IRFs provide mappings between the physical properties of the source and the observables, and so enable estimation of the former (such as the real flux of particles arriving at the instrument, the spectral distribution of the particle flux, and the temporal variability and morphology of the source).  Note that the small number of particles detected in many types of HE observations (i.e., Poisson regime) imply that the IRFs may not be directly invertible, so that techniques such as forward fitting are needed to estimate the physical properties of the source from the observables.  Depending on the instrument, this may imply that some IRFs cannot be easily pre-computed because they may depend on details (e.g. the shape of the source model spectrum) of the scientific analysis to be performed.
+Though an event-list can contain calibrated physical values, typically the data still has to be corrected for the
+photometric, spectral, spatial, and/or temporal responses of the instruments used to yield scientifically interpretable
+information. The IRFs provide mappings between the physical properties of the source and the observables, and so enable
+estimation of the former (such as the real flux of particles arriving at the instrument, the spectral distribution of
+the particle flux, and the temporal variability and morphology of the source).  Note that the small number of particles
+detected in many types of HE observations (i.e., Poisson regime) implies that the IRFs may not be directly invertible,
+so that techniques such as forward-folding fitting are needed to estimate the physical properties of the source from the
+observables. Depending on the instrument, this may imply that some IRFs cannot be easily pre-computed because they may
+depend on details (e.g. the width of the spatial integration region) of the scientific analysis to be performed.
 
 \subsubsection{Granularity of data products}
 
-In order to allow for multi-wavelength data discovery of HE data products and compare observations across different regimes, it seems appropriate to distribute the metadata in the VO ecosystem together with an access link to the data file in community format for finer analysis.
+In order to allow for multi-wavelength data discovery of HE data products and compare observations across different
+regimes, it seems appropriate to distribute the metadata in the VO ecosystem together with an access link to the data
+file in community format for finer analysis.
 
-Where feasible, the efficient granularity for distributing HE data products seems to be the full combination of data and associated IRFs. Depending on the instrument, some IRFs may need to be (re-)computed by a service or tool after parameter selection by the user, so inclusion of additional files that are required for these steps should be included in the package where appropriate.
+Where feasible, the efficient granularity for distributing HE data products seems to be the full combination of data
+and associated IRFs. Depending on the instrument, some IRFs may need to be (re-)computed by a service or tool after
+parameter selection by the user, so inclusion of additional files that are required for these steps should be included
+in the package where appropriate.
 
 % mir already mentionned above why we should consider IRF
-%The coverage information, i.e. how the data product spans on the sky coordinates, and along time and energy axis, is an important criterium for data selection. In the case of HE observations, these parameters vary depending on the selected good time intervals.
+%The coverage information, i.e. how the data product spans on the sky coordinates, and along time and energy axis, is
+%an important criterium for data selection. In the case of HE observations, these parameters vary depending on the
+%selected good time intervals.
 % to be developed
 
-The event-list dataset is generally stored as a table, with one row per candidate detection (event) and several columns for the observed and/or estimated physical parameters (e.g. arrival time, position (on detector or in the sky), energy or pulse height, and additional properties such as errors or flags that are project-dependent) that can vary with data level.
+The event-list dataset is generally stored as a table, with one row per candidate detection (event) and several columns
+for the observed and/or estimated physical parameters (e.g. arrival time, position (on detector or in the sky), energy
+or pulse height, and additional properties such as errors or flags that are project-dependent).
 
-The list of columns present in the event-list is for example described in the data format in use in the HE domain, such as OGIP or GADF as introduced below. The data formats in use generally describe the event-list data together with the IRFs and other relevant information, such as: Stable or Good Time Interval, Effective Area, Energy Dispersion, Point Spread Function, Background,...
+The list of columns present in the event-list is for example described in the data format in use in the HE domain,
+such as OGIP or GADF as introduced below. The data formats in use generally describe the event-list data together with
+the IRFs and other relevant information, such as: Stable or Good Time Interval, dead time, ...
 
-%From an observation file, the event data can lead to several data products results, depending on the parameter selections induced from the knowledge of the IRF.
+%From an observation file, the event data can lead to several data products results, depending on the parameter
+%selections induced from the knowledge of the IRFa.
 
 
 \subsection{Work flow specificities}
 
 \subsubsection{Event selection}
 
-When processing an event-list, it is important to perform an optimal {selection of the events} that are more likely to be due to the incident particles expected. This selection may depend on the source targeted or on the science objectives. The selection can be performed on the event characteristics, e.g. time, energy or more specific indicators (patterns, shape...)
+When processing an event-list, it is common to perform an optimal selection of the events that are more likely to be
+due to the incident particles expected {\bf this is not the case for IACT/WCD. To be changed}. This selection may depend
+on the source targeted or on the science objectives. {\bf The following is true in general} The selection can be
+performed on the event characteristics, e.g. time, energy or more specific indicators (patterns, shape...)
 
 
 \subsubsection{Assumptions and probabilistic approach}
 
-In order to produce advanced data products like light curves or spectra, {assumptions} about the kind of particles, noise, source type and its expected energy distribution must be introduced. This is one of the main driver for enabling a full and well described access to event-list data, as scientific analyses generally start at this data level.
-
+In order to produce advanced data products like light curves or spectra with physical units, assumptions about the kind
+of particles, background and noises, spatial/spectral/temporal characteristics of the sources must be introduced. This
+is one of the main drivers for enabling a full and well described access to event-list data, as scientific analyses
+generally start at this data level. Then, users process these L1/DL3 data with open science analysis tools to derive
+astrophysical products associated to the users' analysis use case.
 
 \subsection{Data formats}
 \label{sec:data_formats}
 
 \subsubsection{{OGIP}}\label{sec:ogip}
 
-NASA's HEASARC FITS Working Group was part of the Office of Guest Investigator Programs, or OGIP, and created in the 1990's the multi-mission standards for the format of FITS data files in NASA high-energy astrophysics. Those so-called OGIP  recommendations\footnote{\url{https://heasarc.gsfc.nasa.gov/docs/heasarc/ofwg/ofwg_recomm.html}} include standards on keyword usage in metadata, on the storage of spatial, temporal, and spectral (energy) information, and representation of response functions, etc.  These standards predate the IVOA but include such VO concepts as data models, vocabularies, provenance, as well as the corresponding FITS serialization specification.   
+NASA's HEASARC FITS Working Group was part of the Office of Guest Investigator Programs, or OGIP, and created in the
+1990's the multi-mission standards for the format of FITS data files in NASA high-energy astrophysics. Those so-called
+OGIP recommendations\footnote{\url{https://heasarc.gsfc.nasa.gov/docs/heasarc/ofwg/ofwg_recomm.html}} include standards
+on keyword usage in metadata, on the storage of spatial, temporal, and spectral (energy) information, and representation
+of response functions, etc. These standards predate the IVOA but include some VO concepts as data models, vocabularies,
+provenance, as well as the corresponding FITS serialization specification.
 
-The purpose of these standards was to allow all mission data archived by the HEASARC to be stored in the same data format and be readable by the same software tools. \S~\ref{sec:chandra} above, for example, describes the Chandra mission products, but many other smaller projects do so as well.  Because of the OGIP standards, the same software tools can be used on all of the high-energy mission data that follow them.  There are now some thirty plus different mission datasets archived by NASA following these standards and different software tools that can analyze any of them.  
+The purpose of these standards was to allow all mission data archived by the HEASARC to be stored in the same data format
+and be readable by the same software tools. \S~\ref{sec:chandra} above, for example, describes the Chandra mission
+products, but many other smaller projects do so as well. Because of the OGIP standards, the same software tools can be
+used on all of the high-energy mission data that follow them. There are now some thirty plus different mission datasets
+archived by NASA following these standards and different software tools that can analyze any of them.
 
-Now that the IVOA is defining data models for spectra and time series, we should be careful to include the existing OGIP standards as special cases of what are developed to be more general standards for all of astronomy.   
-
+Now that the IVOA is defining data models for spectra and time series, we should be careful to include the existing OGIP
+standards as special cases of what are developed to be more general standards for all of astronomy.
 
 \subsubsection{GADF and VODF}
 \label{sec:GADF}
 
-The data formats for gamma-ray astronomy\footnote{\url{https://gamma-astro-data-formats.readthedocs.io/}} (GADF) is a community-driven initiative for the definition of a common and open high-level data format for gamma-ray instruments \citep{2017AIPC.1792g0006D,2021-DF}. GADF is based on the OGIP standards and is specialised for Very High Energy data.
+The used data formats for gamma-ray astronomy\footnote{\url{https://gamma-astro-data-formats.readthedocs.io/}} (GADF) is a community-driven initiative created in the
+2010s that has defined a common and open high-level data format for gamma-ray instruments \citep{2017AIPC.1792g0006D,2021-DF}.
+GADF is based on the OGIP standards and is specialised for VHE data. It is designed for a serialization into FITS files.
+This format became a standard for the whole VHE gamma-ray community (IACT, WCD) and it has been demonstrated that it can
+be used also for neutrino instruments. With the establishment of the GADF format, shared science analysis tools can be
+used by all, which enable for the first time full and coherent joint analyses of data from different facilities.
 
-The Very-high-energy Open Data Format\footnote{\url{https://vodf.readthedocs.io/}} (VODF), is an open data model and format for Very-High-Energy (VHE) gamma-ray and neutrino astronomy. Its goal is to provide a standard set of file formats and standards for data starting at the reconstructed event level as well as higher-level products such as N-dimensional binned data cubes (including sky images, light curves, and spectra) and source catalogues. With these standards, common science tools can be used to analyze data from multiple high-energy instruments. VODF aims to follow as much as possible the IVOA standards.
+The Very-high-energy Open Data Format\footnote{\url{https://vodf.readthedocs.io/}} (VODF) is an open data model and
+format for VHE gamma-ray and neutrino astronomy. Its goal is to provide a standard set of file formats and standards
+for data starting at the reconstructed event level as well as higher-level products such as N-dimensional binned data
+cubes (including sky images, light curves, and spectra) and source catalogues. It will allow a full respect of the FAIR
+principles whatever the data levels and aims to follow as much as possible the IVOA standards. In particular, provenance
+recommendations will be introduced.
 
-\todo[inline]{To be completed:  Bruno}
-
+It is however anticipated that the formatting of the source model description is a bottleneck for the VHE field, and
+as well for the HE field. Indeed, each facility, catalog providers or science analysis tool is currently its own format
+to describe the source models. Also, it appears that some science analysis tools even do not serialise such information,
+rendering them not compliant to the FAIR4RS principles. The data formatting task impacts then also the teams of the main
+analysis libraries.
+%\todo[inline]{To be completed:  Bruno}
 
 \subsection{Tools for data extraction and visualisation}
 \label{sec:tools}
 
-HE data is particularly complex and diverse at lower levels. It is common to find specific tools to process the data for a given facility, e.g. CIAO for Chandra, SAS fro XMM-Newton, of Gammapy for gamma-ray data, with a particular focus on Cherenkov data as foreseen for CTA.
+HE data is particularly complex and diverse between the L1 X-ray data and DL3 gamma-ray/neutrino data, and also between
+facilities. Specific open tools to process the data are in use by the community: CIAO for Chandra, SAS fro XMM-Newton,
+Gammapy for gamma-ray data. Private tools owned by experiments also exist, but they will not be mentioned here.
 
-Those tools can generally handle data from several other obsevatories, that have some level of commonalities.
+Their development history shows different requirements and objectives. Their compliance to the FAIR4RS principles is not
+yet perfect, even if the written data are more and more FAIR. The used and written metadata do not follow exactly the same
+conventions or format, in particular for the provenance or the history. The format of the source models is also not fully
+compatible.
 
-Several other HE software are build to handle the existing data format standards, hence enabling mutli-instrument studies, e.g. XSpec, Sherpa, or Gammapy.
+Nowadays, those facilities libraries and multi-purpose packages (e.g. XSpec, Sherpa, 3ML, Gammapy) can generally handle
+data from several other observatories. This is handled either by having data formats with some level of commonalities or
+by handling different data format from facilities. The multi-instrument data analyses are becoming crucial for some
+science use cases and the existence of this feature is  greatly appreciated by the community. It opens naturally to
+multi-wavelength analyses with an uniform statistical framework and identical systematic errors from the analysis tools.
 
+This feature leads to the library teams to improve their computing performance, their FAIR4RS compliance, in addition to
+the use of new software tools coming from the explosion of open Python projects (e.g. astropy, astroquery, jax, numpyro,
+ArviZ). New algorithms on minimization, high performance computing (GPUs, parallelism on clusters), statistical analyses,
+time series, data access, serialization, data visualisation are developed in the context of the Open Science explosion
+and are enriching the features of the HE software. The interoperability between libraries is becoming an important wished
+feature, on top of the one of the multi-instrument handling.
 
-\todo[inline]{To be completed (e.g. ???)}
+In this context, one should not ignore the need to render accessible data from astrophysical simulations in order to test
+on real data different astrophysical models. Data format for the simulations outputs should be also considered\footnote{The
+XSPEC library contains many models resulting from such theoritical models, even if the lack of traceability or
+reproducibility for some starts to be problematic.} in order to be handled correctly by the science analysis tools.
+
+%\todo[inline]{To be completed (e.g. ???)}
 
 % mireille : to be discussed
 %??? naïve question : what would be the benefit to convert science ready event table data to VOTable?
+%BKH: VOTable are in XML, which is not very great! We generally prefer YAML format. Otherwise, GADF defines a format
+% directly with the FITS standards, without passing via this intermediate format. The use of a .ftts and not a .xml
+% permits also an easy astrophysical visualization (maps) with tools like DS9, FV, etc... But it is true that the
+% handling of metadata by FITS is more and more limited (tricks should be used)
 %Would TOPcat, Aladin, etc. allow more preview steps  , xmatch, multi-wavelength analysis ?
 
 
