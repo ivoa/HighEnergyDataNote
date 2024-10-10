@@ -619,10 +619,31 @@ Provenance information of VHE data product is a crucial information to provide, 
 
 The develoment of the IVOA Provenance Data Model \citep{2020ivoa.spec.0411S} has been conducted with those use cases in mind. The Provenance Data Model proposes to structure this information as activities and entities (as in the W3C PROV recommendation), and adds the concepts of descriptions and configuration of each step, so that the complexity of provenance of VHE data can be exposed.
 
+\subsubsection{Measurements}
+
+The Measurements model \citep{2022ivoa.spec.1004R} describes measured or determined astronomical data and their associated errors.
+This model is highly compatible with the primary measured properties of High Energy data ( Time, Spatial Coordinates, Energy ).
+However, since HE data is typically very sparse, derived properties are often expressed as probability distributions, which are not
+well represented by the IVOA models.  This is one area where input from the HE community can help to improve the IVOA models to better
+represent HE data.
+
 
 \subsection{Data Models in working drafts}
 
-The HE domain and practices could serve as use cases for the developments of data models, such as Dataset DM, Cube DM or MANGO DM.
+The HE domain and practices could serve as use cases for the development of data models, such as Dataset DM, Cube DM or MANGO DM.
+
+\subsubsection{Dataset}
+
+The Dataset Metadata model\footnote{https://www.ivoa.net/documents/DatasetDM} provides a specification of high-level metadata to describe astronomical datasets and data products.
+One feature of this model is that it describes a Dataset as consisting of one or more associated data products.  This feature is not
+well fleshed out in the model.  The HE use cases provide examples where it may be necessary to associate multiple data products
+(e.g. an Event list and its associated IRFs) as a single entity to form a useful dataset.
+
+\subsubsection{Cube}
+
+The Cube model\footnote{https://www.ivoa.net/documents/CubeDM} describes multi-dimensional sparse data cubes and images.  This model is specifically designed to
+represent Event list data and provides the framework for specializing to represent data products such as Spectra and Time Series
+as slices of a multi-dimensional cube.  The image modeling provides the structure necessary to represent important HE image products.
 
 \subsubsection{Mango}
 MANGO is a model (draft: \footnote{https://github.com/ivoa-std/MANGO}) that has been developed to reveal 
@@ -632,7 +653,8 @@ The model focuses on the case of the epoch propagation, the state description
  and photometry. 
  Some features of MANGO are useful for the HE domain:
  
- \begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt]
+% \begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt] << these require the enumitem package?
+ \begin{itemize}
      \item Hardness ratio support
      \item Energy band description
      \item Machine-readable description of state values
