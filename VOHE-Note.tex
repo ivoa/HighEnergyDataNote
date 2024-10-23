@@ -438,25 +438,36 @@ drivers for enabling a full and well described access to event-list data, as HE 
 
 \subsubsection{Low count statistics}
 
-
+Low count statistics are common for sources detected in HE astrophysics observations.  For detectors with low intrinsic backgrounds, limiting source detection thresholds may be in the range 3--5 counts, {\em i.e.\/}, in the Poisson regime.  Even for observations with more counts, many detectors have sufficient spatial and spectral channels (and observations are typically time-resolved) so that the number of counts per spatial pixel/spectral channel/temporal bin will often be very low, and so appropriate extreme Poisson statistical methods must be used to analyze the data ({\em e.g.\/}, using the C-statistic when analyzing low-count Poisson data that may include bins with no counts).  This implies that measurements may require representations that are more robust than a mean value with Gaussian distributed errors.
 
 \subsubsection{Event selection}
 
-When processing an event-list, it is important to perform an optimal selection of the events according to the science
-analysis use case, i.e.  the source targeted or the science objectives. The selection can be performed on the event
-characteristics, e.g. time, energy or more specific indicators (patterns, shape, IRFs properties, ...).
+%When processing an event-list, it is important to perform an optimal selection of the events according to the science
+%analysis use case, i.e.  the source targeted or the science objectives. The selection can be performed on the event
+%characteristics, e.g. time, energy or more specific indicators (patterns, shape, IRFs properties, ...).
+
+When analyzing an event-list, optimal selection of the events according to the science analysis use case is essential.  While appropriately selecting data from an observation ({\em e.g.\/}, selecting a region surrounding the target source) is a common practice, for HE observations spatial, spectral, and temporal selection is typically necessary because of the large ranges covered by these dimensional axes.  For example, a {\em Chandra\/} X-ray Observatory dataset spans two orders of magnitude energy (spectral) range; this is compared to roughly a factor of 2 for an optical spectrum.  Selections may be performed on the event characteristics such as time, energy, or more specific indicators ({\em e.g.\/}, patterns, shape, IRFs properties).
 
 \subsubsection{Event binning}
 
+Binning together events in any of the spatial/spectral/temporal axes is commonly used when analyzing HE astrophysics data to increase the number of counts per bin (at the expense of reduced resolution along the given axis).  For example, binning spatially can increase the S/N of faint extended emission.  For the spectral and temporal axes, binning to achieve a minimum number of counts per bin may be used  to facilitate data modeling while still preserving the highest possible resolution in regions with more counts.  After binning, this means that  spectra and light curves with variable bin widths may be commonly encountered when dealing with HE datasets.
 
 \subsubsection{The unfolding problem}
 
-Due to the small number of particles
-detected in many types of HE observations (i.e. within a Poisson regime) and the fact that the IRFs may not be directly invertible,
-techniques such as forward-folding fitting \citep{mattox:1996} are needed to estimate the physical properties of the
-source from the observables.
+%Due to the small number of particles
+%detected in many types of HE observations (i.e. within a Poisson regime) and the fact that the IRFs may not be directly invertible,
+%techniques such as forward-folding fitting \citep{mattox:1996} are needed to estimate the physical properties of the
+%source from the observables.
 
+Because particles detected by HE astrophysics experiments are ionizing, they typically interact with the materials of the telescope and detector ({\em e.g.\/}, by exciting K-shell electrons) so the relationship between the observables and the source's physical properties of interest is typically complex.  Recovering the physical properties from the observables is sometimes termed ``the unfolding problem.''
 
+For example, for instruments that detect photons, the observed source spectrum can be related to the physical source spectrum very generally as follows:
+\begin{equation}\label{eqn:phaspec}
+M(E', \hat{p}', t) = \int_{E'} dE\, d\hat{p}\, R(E'; E, \hat{p}, t) A(E, \hat{p}', t) P(\hat{p}'; E, \hat{p}, t) S(E, \hat{p}, t)
+\end{equation}
+where $M(E', \hat{p}', t)$ is the expected observed channel distribution of detected source counts, $R(E'; E, \hat{p}, t)$ is the redistribution matrix that defines the probability that a photon with actual energy $E$, location $\hat{p}$, and arrival time $t$ will be observed with apparent energy $E'$ and location $\hat{p}'$, $A(E, \hat{p}', t)$ is the instrumental effective area (sensitivity), $P(\hat{p}'; E, \hat{p}, t)$ is the photon spatial dispersion transfer function ({\em i.e.\/}, the instrumental point spread function), and  $S(E, \hat{p}, t)$ is the physical model that describes the physical energy spectrum, spatial morphology, and temporal variability of the source.  Missions that follow the OGIP standards (see section~\ref{sec:ogip}) generally record the redistribution matrix using the redistribution matrix file (RMF) format and the instrumental effective area using the auxiliary response file (ARF) format.  Other experiments combine the RMF and ARF into a single instrument response function (IRF).
+
+Low count statistics implies that the mapping from $S$ to $M$ is typically not invertible ({\em i.e.\/}, one cannot simply derive $S$ given $M$)\null.  Methods such as forward-folding fitting \citep{mattox:1996} ({\em i.e.\/}, proposing a model for $S$, folding the model through equation~({\ref{eqn:phaspec}) to derive $M$ and optimizing the model parameters to minimize the deviations between $M$ and the actual observed data) are needed to estimate the physical properties of the source from the observables.  A further added complexity is that the integrated responses may themselves be functions of the unknown $S$.
 
 \subsection{Data formats}
 \label{sec:data_formats}
