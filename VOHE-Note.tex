@@ -757,7 +757,7 @@ The develoment of the \gls{IVOA} Provenance Data Model \citep{2020ivoa.spec.0411
 
 \subsubsection{VOEvent}
 
-Source variability and observations of transient are common in the \gls{HE} domain, and as such, handling of alerts is generally including in the requirements of \gls{HE} observatories. Alerts are both sent and received by \gls{HE} observatories. The \gls{IVOA} recommendation VOEvent \citep{2017ivoa.spec.0320S} is thus of interest to the \gls{HE} domain.  This standard has been part of the decades-long success of of the General Coordinates Network (GCN)\footnote{\url{https://gcn.nasa.gov/}}, an alert system first created in the 1990's for BATSE\footnote{\url{https://ui.adsabs.harvard.edu/abs/1995Ap\%26SS.231..235B/abstract}} that has been through a number of technology and standards refreshes.  See also \S~\ref{sec:voevent_he}. 
+Source variability and observations of transient are common in the \gls{HE} domain, and as such, handling of alerts is generally including in the requirements of \gls{HE} observatories. Alerts are both sent and received by \gls{HE} observatories. The \gls{IVOA} recommendation VOEvent \citep{2017ivoa.spec.0320S} is thus of interest to the \gls{HE} domain.  This standard has been part of the decades-long success of of the General Coordinates Network (GCN)\footnote{\url{https://gcn.nasa.gov/}}, an alert system first created in the 1990's for BATSE \citep{1995Ap&SS.231..235B} that has been through a number of technology and standards refreshes.  See also \S~\ref{sec:voevent_he}. 
  
 
 
@@ -1008,7 +1008,7 @@ There are two options to provide an access to a full event-bundle package.
 In the first option, the "event-bundle" dataset (\ref{sec:event-bundlle-or-list}) exposed in the discovery service  contains all the relevant information, e.g. several frames in the \gls{FITS} file, one corresponding to the event-list itself, and the others providing good/stable time intervals, or any \gls{IRF} file. This is what was done in the current \gls{GADF} data format (see \ref{sec:GADF}). In this option, the content of the event-list package should be properly defined in its description: what information is included and where is it in the dataset structure? The Event-list Context Data Model (see \ref{sec:EventListContext}) would be useful to provide that information.
 
 In the second option, we would provide links to the relevant information from the base "event-list" (\ref{sec:event-bundlle-or-list}) exposed in the discovery service. This could be done using Datalink and a list of links to each contextual information such as the \gls{IRF}s. The Event-list Context Data Model (see \ref{sec:EventListContext}) would provide the concepts and vocabulary to characterise the \gls{IRF}s and other information relevant to the analysis of an event-list. These specific concepts and terms describing the various flavors of \gls{IRF}s and \gls{GTI}s will be given in the semantics and content\_qualifier FIELDS of the DataLink response to qualify the links. The different links can point to different
-dereferencable URLs or alternbatively to different fragments of the same drefereencable URL as stated by the DataLink specification.
+dereferencable URLs or alternatively to different fragments of the same dereferencable URL as stated by the DataLink specification.
 
 \subsection{VOEvent modernization}\lable{sec:voevent_he}
 
