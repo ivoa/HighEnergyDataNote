@@ -526,17 +526,35 @@ Binning together events in any of the spatial/spectral/temporal axes is commonly
 %techniques such as forward-folding fitting \citep{mattox:1996} are needed to estimate the physical properties of the
 %source from the observables.
 
-Because particles detected by \gls{HE} astrophysics experiments are ionizing, they typically interact with the materials of the telescope and detector ({\em e.g.\/}, by exciting K-shell electrons) so the relationship between the observables and the source's physical properties of interest is typically complex.  Recovering the physical properties from the observables is sometimes termed ``the unfolding problem.''
+\gls{HE} and \gls{VHE} astrophysics experiments are using complex detection techniques from the interaction of the radiation
+and the matter. For X-rays, photons interact with the materials of the telescope and detector ({\em e.g.\/}, by exciting K-shell electrons).
+Very high energy gamma-rays or neutrinos are interacting first for the atmosphere or the Earth to create particle cascades,
+whose secondaries radiate Cherenkov light. These complex interactions render the relationship between the detector observables
+and the source's physical properties of interest very complex. Recovering the physical properties from the  observables
+is sometimes termed ``the unfolding problem.''
 
-For example, for instruments that detect photons, the observed source spectrum can be related to the physical source spectrum very generally as follows:
+Most of the time, the detected number of expected counts can be related to the physical source spectrum as follows:
 \begin{equation}\label{eqn:phaspec}
-M(E', \hat{p}', t) = \int_{E'} dE\, d\hat{p}\, R(E'; E, \hat{p}, t) A(E, \hat{p}', t) P(\hat{p}'; E, \hat{p}, t) S(E, \hat{p}, t)
+M(E', \hat{p}', t) = \int_{E'} dE\, d\hat{p}\, R(E'; E, \hat{p}, t) A(E, \hat{p}, t) P(\hat{p}'; E, \hat{p}, t) S(E, \hat{p}, t) + B(E', \hat{p}', t)
 \end{equation}
-where $M(E', \hat{p}', t)$ is the expected observed channel distribution of detected source counts, $R(E'; E, \hat{p}, t)$ is the redistribution matrix that defines the probability that a photon with actual energy $E$, location $\hat{p}$, and arrival time $t$ will be observed with apparent energy $E'$ and location $\hat{p}'$, $A(E, \hat{p}', t)$ is the instrumental effective area (sensitivity), $P(\hat{p}'; E, \hat{p}, t)$ is the photon spatial dispersion transfer function ({\em i.e.\/}, the instrumental point spread function), and  $S(E, \hat{p}, t)$ is the physical model that describes the physical energy spectrum, spatial morphology, and temporal variability of the source.
+where $M(E', \hat{p}', t)$ is the detected source counts per bin in apparent energy $E'$, apparent location $\hat{p}'$ and
+arrival time $t$, $R(E'; E, \hat{p}, t)$ is the redistribution matrix that defines the probability that a photon with
+actual energy $E$, location $\hat{p}$, and arrival time $t$ will be observed with apparent energy $E'$, $A(E, \hat{p}, t)$ is the instrumental
+effective area (sensitivity), $P(\hat{p}'; E, \hat{p}, t)$ is the photon spatial dispersion transfer function ({\em i.e.\/},
+the instrumental point spread function), $S(E, \hat{p}, t)$ is the physical model that describes the physical energy spectrum,
+spatial morphology, and temporal variability of the source, and $B(E', \hat{p}', t)$ the number of expected background\footnote{It can
+originate from the intrument, atmospheric cosmic-rays, terrestrial phenomena, etc}.
 
-Missions that follow the OGIP standards (see section~\ref{sec:ogip}) generally record the redistribution matrix using the \gls{RMF} format and the instrumental effective area using the \gls{ARF} format.  Other experiments combine the \gls{RMF} and \gls{ARF} into a single \gls{IRF}.
+Missions that follow the OGIP standards (see section~\ref{sec:ogip}) generally record the redistribution matrix using the
+\gls{RMF} format and the instrumental effective area using the \gls{ARF} format. For \gls{VHE} experiments, $R$, $P$, $A$ and
+$B$ form the four instrument response functions (IRFs) that are described into the \gls{GADF} format.
 
-Low count statistics implies that the mapping from $S$ to $M$ is typically not invertible ({\em i.e.\/}, one cannot simply derive $S$ given $M$)\null.  Methods such as forward-folding fitting \citep{mattox:1996} ({\em i.e.\/}, proposing a model for $S$, folding the model through equation~({\ref{eqn:phaspec}) to derive $M$ and optimizing the model parameters to minimize the deviations between $M$ and the actual observed data) are needed to estimate the physical properties of the source from the observables.  A further added complexity is that the integrated responses may themselves be functions of the unknown $S$.
+Low count statistics implies that the mapping from $S$ to $M$ is typically not invertible ({\em i.e.\/}, one cannot
+simply derive $S$ given $M$)\null.  Methods such as forward-folding fitting \citep{mattox:1996} ({\em i.e.\/}, proposing
+a model for $S$, folding the model through equation~({\ref{eqn:phaspec}) to derive $M$ and optimizing the model parameters
+to minimize the deviations between $M$ and the actual observed data) are needed to estimate the physical properties of
+the source from the observables. A further added complexity is that the redistribution matrix and the photon spatial
+dispersion transfer function can not be factorised in some cases.
 
 \subsection{Data formats}
 \label{sec:data_formats}
