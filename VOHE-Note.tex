@@ -355,26 +355,34 @@ It is to be noted that the \gls{TAP} service operated in Strasbourg (\url{https:
 is a Sino-French mission dedicated
 to the study of the transient \gls{HE} sky, and in particular to the detection, localisation and
 study of Gamma Ray Bursts (GRBs).
-Gamma-ray bursts are sudden, intense flashes of X-ray and gamma-ray light.
-They are associated with the cataclysmic formation of black holes, either by the merger of two compact stars
-(neutron star or black hole) or by the sudden explosion of a massive star, twenty to one hundred times the mass of our Sun.
-The birth of a black hole is accompanied by the ejection of jets of matter that reach speeds close to the speed of light.
-These jets of matter then decelerate in the circumstellar medium, sweeping away everything in their path.
-Gamma-ray bursts can be observed at the very edge of the universe, acting as lighthouses that illuminate
-the dark ages of its creation. Although they have been studied extensively over the past fifteen years,
-gamma-ray bursts are still poorly understood phenomena. To better understand them, China and France have decided
-to join forces with the \gls{SVOM} satellite, which is specifically dedicated to the study of gamma-ray bursts.
-
 The special feature of the \gls{SVOM} mission is that it combines ground-based and space-based observations,
-providing a spectral bandwidth from the visible to the \gls{HE} range. By guaranteeing multi-wavelength
-observations of about one hundred bursts of all types per year, the \gls{SVOM} mission will make a unique contribution
-to two of the most fruitful areas of research in recent decades: the use of bursts in cosmology and the understanding
-of the phenomenon. Looking further ahead, the \gls{SVOM} mission will work in close synergy with a new generation of
-instruments dedicated to the search for neutrinos and gravitational waves of cosmic origin, in order to confirm
-the astrophysical origin of the signals detected by these future instruments.
+providing a spectral bandwidth from the visible to the \gls{HE} range.
 
-\gls{SVOM} has been successfully launched on June 22 2024 from  Xichang lauchpad.
+The \gls{SVOM} spacecraft carries four multi-wavelength instruments: ECLAIRs(4-250keV),
+GRM (15-5000 keV), MXT (0.3 - 10 keV) and VT (optical Blue and Red broadband filters).
+ECLAIRs and GRM can detect gamma-ray transient sources in real-time with localisation
+capabilities for ECLAIRs. An autonomous slew of the platform can be requested (only by
+ECLAIRs) to perform X-ray and optical follow-up of the source with the smaller field
+of view instruments: MXT and VT.
+\gls{SVOM} also transfers alerts data of potential GRBs detection in near real-time to the ground
+with a typical latency of less than 30 seconds.
+The most valuable information (e.g. localisation, SNR, energy range and more) are then
+automatically shared to the world-wide community within the form of Notices.
+They will be broadcasted to the worldwide community using the NASA's General Coordinates
+Network (GCN) system both in VOEvent and in JSON format. Public access to
+the dedicated Kafka streams are planned to be opened at the beginning of 2025.
 
+All data related to GRB detections will be public and can be
+retrieved through the \gls{SVOM} portal (not deployed at the time of writing).
+All these science products, in FITS format, do conform to a global data model based on JSON descriptors.
+Pipeline modules are able to extend the data products they deliver with a list of
+keywords that carry most of the Obscore quantities. This feature will facilitate
+their publication in ObsTAP services.
+
+\gls{SVOM} has been successfully launched on June 22 2024 from Xichang lauchpad.
+As early as the commissionning phase, it has detected numerous
+interesting GRBs and triggered follow-up campaigns with very different facilities such
+as SWIFT, Einstein Probe or even the VLT.
 
 \subsection{KM3Net and neutrino detection}
 
