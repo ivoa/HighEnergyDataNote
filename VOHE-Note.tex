@@ -656,8 +656,9 @@ dependent associated to each observation.
 
 \subsection{UC3: transient or variable sources}
 
+\gls{HE} sources can be variable at different time scales. Observations of those sources may be triggered when sources enter a particular state, or when a transient source or phenomena appears.
 
-\todo[inline]{To be completed (e.g. Ada)}
+Use cases for the study of those sources imply the emission of alerts from one observatory to the others, with relevant content to describe the source and its variability to organise further observtions. Otherwise, archived \gls{HE} data may be reprocessed to explore the past variability at different wavelengths.
 
 
 \subsection{UC4: Multi-wavelength and multi-messenger science}
@@ -672,19 +673,16 @@ identify \gls{HE} sources.
 The \gls{HE} domain is thus confronted to different kinds of data types and data archives, which leads to interesting use
 cases for the development of the \gls{VO}.
 
-One use case is associated to independent analyses of the multi-wavelength and multi-messenger data. \gls{HE} data are
-analysed to produce DL5/L3 quantities from DL3/L1 stored in the \gls{VO}. And the multi-wavelength and multi-messenger
-DL5/L3 data stored are retrieved into the \gls{VO} and associated to realise astrophysical interpretations.
+One use case is associated to independent analyses of the multi-wavelength and multi-messenger data for a given source. Each kind of data product has to be retrieved, and all the datasets have to be associated to realise astrophysical interpretations, requiring some level of compatibility.
 
-The other growing use case is associated to joint statistical analyses of multi-instrument data at different levels
-(DL3/L1 and DL5/L3) by adapted open science analysis tools.
+The other growing use case is associated to joint statistical analyses of multi-instrument data using adapted open science analysis tools.
 
 For both use cases, any type of data should be findable on the \gls{VO} and retrievable. And the data should have a
 standardised open format (\gls{OGIP}, \gls{GADF}, \gls{VODF}).
 
-Such use cases are already common with many examples in the x-rays in the decades that missions have been contributing to the standardized HEASoft package. Other examples include small data sets shared by \gls{VHE} experiments. In
+Such use cases are already common with many examples in the X-rays in the decades that missions have been contributing to the standardized HEASoft package. Other examples include small data sets shared by \gls{VHE} experiments. In
 \citep{2019A&A...625A..10N, 2022A&A...667A..36A}, groups of astronomers working on the Gammapy library had successfully
-analysed DL3 data taken on the Crab nebula by different facilities (\gls{MAGIC}, \gls{HESS}, \gls{VERITAS}, Fermi-LAT and \gls{HAWC}).
+analysed data taken on the Crab nebula by different facilities (\gls{MAGIC}, \gls{HESS}, \gls{VERITAS}, Fermi and \gls{HAWC}).
 A real statistical joint analysis has been performed to derive an emitting model of the Crab pulsar wind nebula over more
 than five decades in energy. Such analysis types can be now retrieved in the literature. One can also find joint analyses using X-ray and \gls{VHE} data \citep{giunti2022}. A proof of concept of joint analysis of \gls{VHE} gamma-ray and \gls{VHE} neutrino,
 using simulated data, has been also published \citep{unbehaun2024}.
