@@ -126,7 +126,7 @@ and the HE discussion group at IVOA
 \begin{document}
 
 \begin{abstract}
-This note explores the connections between the \gls{VO} and \gls{HE} astrophysics. Observations of the Universe at high energies are based on techniques that are radically different compared to the optical, or radio domain. We describe the operations and purpose of several HE observatories, then detail the specificities of the \gls{HE} data and its processing, and derive typical \gls{HE} use cases relevant for the \gls{VO}. A \gls{HE} group has been federated over the years and this note reports on several topics that could constitute an initial roadmap to a \gls{HE} interest group within the \gls{IVOA}.
+This note explores the connections between the \gls{VO} and \gls{HE} astrophysics. Observations of the Universe at high energies are based on techniques that are different compared to the optical, or radio domain. We describe several HE observatories, then detail the specificities of the \gls{HE} data and its processing, and derive typical \gls{HE} use cases relevant for the \gls{VO}. A \gls{HE} group has been federated over the years and this note reports on several topics that could constitute an initial roadmap to a \gls{HE} interest group within the \gls{IVOA}.
 \end{abstract}
 
 
@@ -134,7 +134,7 @@ This note explores the connections between the \gls{VO} and \gls{HE} astrophysic
 
 We acknowledge support from the ESCAPE project funded by the EU Horizon 2020 research and innovation program (Grant Agreement n.824064).
 Additional funding was provided by the INSU (Action Sp\'ecifique Observatoire Virtuel, ASOV), the Action F\'ed\'eratrice
-CTA and the Action Pluriannuelle Incitatrice Astrophysioque des processus de Hautes \'Energies at the Observatoire de
+CTA and the Action Pluriannuelle Incitatrice Astrophysique des processus de Hautes \'Energies at the Observatoire de
 Paris, and the Paris Astronomical Data Centre (PADC).
 
 \section*{Conformance-related definitions}
@@ -157,22 +157,21 @@ infrastructure that enable VO applications.
 
 \gls{HE} astronomy typically includes X-ray astronomy, gamma-ray astronomy,
 % of the GeV range (HE), the TeV range (very high energy, VHE) up to the ultra high energy (UHE) above 100 TeV, the VHE
-neutrino astronomy, and studies of cosmic rays. This domain is now sufficiently developed to provide high level data such as catalogs, images, including full-sky surveys for some missions, and sources properties in the shape of spectra and time series.
-Some high-level \gls{HE} observations have been included in the \gls{VO}, via data access endpoints provided by observatories or by agencies and indexed in the \gls{VO} Registry.
+neutrino astronomy, and studies of cosmic rays. This domain is now sufficiently developed to provide advanced data products such as catalogs, images, including full-sky surveys for some missions, and sources properties in the shape of spectra and time series.
+Some \gls{HE} observations have been included in the \gls{VO}, via data access endpoints provided by observatories or by agencies and indexed in the \gls{VO} Registry.
 %Some \gls{HE} data is already available via the VO. Images, time series, and spectra may be described with Obscore and access.
 
-However, after browsing this data, users may want to download lower level data and reapply data reduction steps relevant to their Science objectives. A common scenario is to download \gls{HE} "event" lists, i.e. list of detected events on a \gls{HE} detector that are expected to be the detection of particles (e.g. a \gls{HE} photon, or a neutrino), and the corresponding calibration files, including \gls{IRF}s. The findability and accessibility of this data via the \gls{VO} is the focus of this note.
+However, after browsing those data products, users may want to reapply data reduction steps relevant to their Science objectives. A common scenario is to download \gls{HE} "event" lists, i.e. list of detected events on a \gls{HE} detector that are expected to be the detection of particles (e.g. a \gls{HE} photon, or a neutrino), and the corresponding calibration files, including \gls{IRF}s. The findability and accessibility of this data via the \gls{VO} is the focus of this note. We note that some existing \gls{IVOA} recommendations are of interest to the domain. These should be further explored and tested by \gls{HE} observatories.
 
-We report typical use cases for data access and analysis of data from current \gls{HE} observatories. From these use
-cases, we note that some existing \gls{IVOA} recommendations are of interest to the domain. These should be further explored and tested
-by \gls{HE} observatories. We then discuss how standards could evolve to better integrate specific aspects of \gls{HE} data, and if
+We first identify and expose the specificities of \gls{HE} data as provided by several \gls{HE} observatories.
+We report typical use cases for data access and analysis of data from current \gls{HE} observatories.
+We then intend to illustrate how \gls{HE} data is or can be handled using current \gls{IVOA} standards.
+We also discuss how \gls{IVOA} standards could evolve to better integrate specific aspects of \gls{HE} data, and if
 new standards should be developed.
 
 \subsection{Objectives of the document}
 
 The main objective of the document is to analyse how \gls{HE} data can be better integrated to the \gls{VO}.
-
-We first identify and expose the specificities of \gls{HE} data as provided by several \gls{HE} observatories. We then intend to illustrate how \gls{HE} data is or can be handled using current \gls{IVOA} standards. Finally, we explore several topics that could lead to \gls{HE} specific recommandations.
 
 A related objective is to provide a context and a list of topics to be further discussed within the \gls{IVOA} by a dedicated \gls{HE} Interest Group (HEIG).
 
@@ -229,11 +228,11 @@ operational since 2012, extending the energy coverage towards lower energies and
 The \gls{HESS} collaboration operates the telescopes as a private experiment and publishes mainly high level data,
 i.e. images, time series and spectra in scientific publications after dedicated analyses. Using complex algorithms,
 private software process the raw data by applying calibration, reconstructing event properties from their Cherenkov
-images and purifying the event list by removing as much as possible events induced by atmospheric cosmic rays. Even
-after this purification, events are largely generated by cosmic rays and statistical analyses are required to derive
-the astrophysical source properties. M
+images and cleaning the event list by removing as much as possible events induced by atmospheric cosmic rays. Even
+after cleaning, events are largely generated by cosmic rays and statistical analyses are required to derive
+the astrophysical source properties.
 
-odels of background due to the remaining cosmic rays
+Models of background due to the remaining cosmic rays
 (generally generated from real observations) are used with the gamma-ray \gls{IRF}s, i.e. \gls{PSF}, Energy Dispersion and Collection Area,
 that are generated by extensive Monte Carlo simulations. These 4 \gls{IRF}s (background, \gls{PSF}, Energy Dispersion and Collection Area) are computed
 for each observation of $\sim$~30min and are valid for the field of view. They depend on true energies, positions in the
@@ -269,8 +268,8 @@ for \gls{CTAO} data has been a driver for the development of a provenance standa
 European Project, and is now part of the ESCAPE Open Collaboration to face common challenges for Research Infrastructures
 in the context of cloud computing, including data analysis and distribution.
 
-A focus of \gls{CTAO} is to distribute in this context their Data Level 3 (DL3) datasets, that correspond to lists of Cherenkov
-events detected by the telescopes along with the proper \gls{IRF}s. \gls{CTAO} is planning an internal and a public Science Data
+A focus of \gls{CTAO} is to distribute in this context the event list datasets, that correspond to lists of Cherenkov
+events detected by the telescopes along with the associated \gls{IRF}s. \gls{CTAO} is planning an internal and a public Science Data
 Challenges, which represent opportunities to build "\gls{VO} inside" solutions.
 %% Need to describe the \gls{IRF}s like for Chandra?
 
@@ -420,7 +419,7 @@ Observations of \gls{GW}s may be called \gls{GW} events, though they are not rel
 
 \subsubsection{Event-counting}
 
-Observations of the Universe at high energies are based on techniques that are radically different compared to the optical, or radio domain. \gls{HE} observatories are generally designed to detect particles, e.g. individual photons, cosmic rays, or neutrinos, with the ability to estimate several characteristics of those particles. This technique is generally named \textbf{event counting}, where an event has some probability of being due to the interaction of an astronomical particle with the detectors.
+Observations of the Universe at high energies are based on techniques that are different compared to the optical, or radio domain. \gls{HE} observatories are generally designed to detect particles, e.g. individual photons, cosmic rays, or neutrinos, with the ability to estimate several characteristics of those particles. This technique is named \textbf{event counting}, where an event has some probability of being due to the interaction of an astronomical particle with the detectors.
 
 The data corresponding to an \textbf{event} is first an instrumental signal, which is then calibrated and processed to estimate event characteristics such as a time of arrival, coordinates on the sky, and the energy proxy associated to the event. Several other intermediate and qualifying characteristics can be associated to a detected event.
 
@@ -441,9 +440,9 @@ After detection of events, data processing steps are applied to generate data pr
     \item[3] Calibrated maps, or spectral energy distributions for a source, or light-curves in physical units, or adjusted source models.
 \end{itemize}
 
-An additional higher data level corresponds to catalogs, e.g. a source catalog pointing to several data products for each source (e.g. collection of high-level products), or a catalog of source models generated with an uniform analyse.
+Those data products may be found in catalogs, e.g. a source catalog pointing to several data products for each source (e.g. collection of high-level products), or a catalog of source models generated with an uniform analyse.
 
-However, the definitions of these data levels can vary significantly from facility to facility. For example, in the \gls{VHE} Cherenkov astronomy domain (e.g. \gls{CTAO}), the data levels listed above are labelled DL3\footnote{lower
+The definitions of these data levels can vary from facility to facility. For example, in the \gls{VHE} Cherenkov astronomy domain (e.g. \gls{CTAO}), the data levels listed above are labelled DL3\footnote{lower
 level data (DL0--DL2), that are specific to the used instrumentation (\gls{IACT}, \gls{WCD}), are reconstructed and filtered, which
 constitute the events lists called DL3.} to DL5. For Chandra X-ray data, the first two levels correspond  to L1 and L2 data products (excluding the responses), while transmission-grating data products are designated L1.5 and source catalog and associated data products are all designated L3.
 
@@ -452,7 +451,7 @@ constitute the events lists called DL3.} to DL5. For Chandra X-ray data, the fir
 
 Observations in \gls{HE} may contain a high background component, that may be due to instrument noises, or to unresolved astrophysical sources, emission from extended regions or other terrestrial sources producing particles similar to the signal. The characterisation and estimation of this background may be particularly important to then apply corrections during the analysis of a source signal.
 
-In the \gls{VHE} domain with the \gls{IACT}, \gls{WCD} and neutrino techniques, the main source of background at the DL3 level is created by cosmic-ray induced events. The case of unresolved astrophysical sources, emission from extended regions are treated as models of gamma-ray or neutrino emission.
+In the \gls{VHE} domain with the \gls{IACT}, \gls{WCD} and neutrino techniques, the main source of background is generated by cosmic-ray induced events. The case of unresolved astrophysical sources, emission from extended regions are treated as models of gamma-ray or neutrino emission.
 
 In the X-ray domain, contributions to background can include an instrumental component, the local radiation environment (i.e. space weather) which can change dynamically, and may include the cosmological background due to unresolved astrophysical sources, depending on the spatial resolution of the instrument.
 
@@ -517,13 +516,13 @@ Low count statistics are common for sources detected in \gls{HE} astrophysics ob
 %analysis use case, i.e.  the source targeted or the science objectives. The selection can be performed on the event
 %characteristics, e.g. time, energy or more specific indicators (patterns, shape, \gls{IRF}s properties, ...).
 
-When analyzing an event-list, optimal selection of the events according to the science analysis use case is essential.  While appropriately selecting data from an observation ({\em e.g.\/}, selecting a region surrounding the target source) is a common practice, for \gls{HE} observations spatial, spectral, and temporal selection is typically necessary because of the large ranges covered by these dimensional axes.  For example, a {\em Chandra\/} X-ray Observatory dataset spans two orders of magnitude energy (spectral) range; this is compared to roughly a factor of 2 for an optical spectrum.  Selections may be performed on the event characteristics such as time, energy, or more specific indicators ({\em e.g.\/}, patterns, shape, \gls{IRF}s properties).
+When analyzing an event-list, optimal selection of the events according to the science analysis use case is essential.  While appropriately selecting data from an observation ({\em e.g.\/}, selecting a region surrounding the target source) is a common practice, for \gls{HE} observations spatial, spectral, and temporal selection is typically necessary because of the large ranges covered by these dimensional axes. Selections may be performed on the event characteristics such as time, energy, or more specific indicators ({\em e.g.\/}, patterns, shape, \gls{IRF}s properties).
 
 \subsubsection{Event binning}
 
 Binning together events in any of the spatial/spectral/temporal axes is commonly used when analyzing \gls{HE} astrophysics data to increase the number of counts per bin (at the expense of reduced resolution along the given axis).  For example, binning spatially can increase the S/N of faint extended emission.  For the spectral and temporal axes, binning to achieve a minimum number of counts per bin may be used  to facilitate data modeling while still preserving the highest possible resolution in regions with more counts.  After binning, this means that  spectra and light curves with variable bin widths may be commonly encountered when dealing with \gls{HE} datasets.
 
-\subsubsection{The unfolding problem}
+\subsubsection{The "unfolding" problem}
 
 %Due to the small number of particles
 %detected in many types of HE observations (i.e. within a Poisson regime) and the fact that the \gls{IRF}s may not be directly invertible,
@@ -532,7 +531,7 @@ Binning together events in any of the spatial/spectral/temporal axes is commonly
 
 \gls{HE} and \gls{VHE} astrophysics experiments are using complex detection techniques from the interaction of the radiation
 and the matter. For X-rays, photons interact with the materials of the telescope and detector ({\em e.g.\/}, by exciting K-shell electrons).
-Very high energy gamma-rays or neutrinos are interacting first for the atmosphere or the Earth to create particle cascades,
+Very high energy gamma-rays or neutrinos are interacting first with the atmosphere or the Earth to create particle cascades,
 whose secondaries radiate Cherenkov light. These complex interactions render the relationship between the detector observables
 and the source's physical properties of interest very complex. Recovering the physical properties from the  observables
 is sometimes termed ``the unfolding problem.''
@@ -573,7 +572,7 @@ but many other projects do so as well. Because of the \gls{OGIP} standards, the 
 mission data that follow them. There are now some thirty plus different mission datasets archived by \gls{NASA} following
 these standards and different software tools that can analyse any of them.
 
-Now that the \gls{IVOA} is defining data models for spectra and time series, we should be careful to include the existing \gls{OGIP}
+As \gls{IVOA} is defining data models for spectra and time series, we should be careful to include the existing \gls{OGIP}
 standards as special cases of what are developed to be more general standards for all of astronomy. Standards about
 source morphology should also be introduced.
 
@@ -585,19 +584,19 @@ of a common and open high-level data format for gamma-ray instruments \citep{201
 reconstructed event level. \gls{GADF} is based partially on the \gls{OGIP} standards and is specialised for \gls{VHE} data.
 It was originally developed in 2011 for \gls{CTAO} during it's prototyping phase, and was further tested on data from the
 \gls{HESS} telescope array. This format is now used as a standard for \gls{VHE} gamma-ray data. The project was made open-source
-in 2016, and became the base format for the \emph{Gammapy} software.
+in 2016, and became the base format for the Gammapy software.
 
 The \gls{VODF}\footnote{\url{https://vodf.readthedocs.io/}} \citep{khelifi2023veryhighenergyopendataformat} will build upon and be the successor to \gls{GADF}. It is
 intended to address some of the short-comings of the \gls{GADF} format, to provide a properly documented and consistent data
 model, to cover use cases of both \gls{VHE} gamma-ray and neutrino astronomy, and to provide more support for validation and
-versioning. \gls{VODF} will provide a standard set of file formats for data starting at the reconstructed event level (DL3, i.e.
+versioning. \gls{VODF} will provide a standard set of file formats for data starting at the reconstructed event level (event list, i.e.
 first item in the section \ref{sec:datalevels}) as well as higher-level products (i.e. sky images, light curves, and spectra)
 and source catalogues (see section \ref{sec:datalevels}), as well as N-dimensional binned data cubes. With these
 standards, common science tools can be used to analyse data from multiple \gls{HE} instruments, including
 facilitating the ability to do combined likelihood fits of models across a wide energy range directly from events or
 binned products. \gls{VODF} aims to follow or be compatible with existing \gls{IVOA} standards as much as possible.
 
-\subsection{Tools for data extraction and visualisation}
+\subsection{Data extraction and visualisation}
 \label{sec:tools}
 
 %HE data is particularly complex and diverse at lower levels. It is common to find specific tools to process the data for a given facility, e.g. CIAO for Chandra, \gls{SAS} fro \gls{XMM-Newton}, of Gammapy for gamma-ray data, with a particular focus on Cherenkov data as foreseen for \gls{CTAO}.
@@ -638,8 +637,9 @@ images, spectra and light-curves. To further study the \gls{HE} data, users genr
 Users will thus access those event-list and retrieve or regenerate the related calibration files. They will also install and run dedicated tools to reprocess this low-level data.
 
 %\todo[inline]{To be completed (e.g. Paula, Laurent)}
-One of the characteristics of the \gls{HE} data is that, contrary to what is usually done in optics for example, their optimal
-use requires providing users with a view of the processing that generated the data. This implies providing ancillary data,
+One of the characteristics of the \gls{HE} data is that end data products depend strongly on assumptions taken when processing raw data. This preprocessing of the data conducting to event lists has a strong impact on the results and different data manipulations may be applyed depending on the science case.
+
+The record of provenance information during data preparation is particularly important for \gls{HE}/\gls{VHE} data. Their optimal use requires providing users with a view of the processing that generated the data. This implies providing ancillary data,
 products with different calibration levels, and possibly linking together products issued by the same processing.
 %(LM)
 
@@ -682,7 +682,7 @@ The other growing use case is associated to joint statistical analyses of multi-
 For both use cases, any type of data should be findable on the \gls{VO} and retrievable. And the data should have a
 standardised open format (\gls{OGIP}, \gls{GADF}, \gls{VODF}).
 
-Such use cases are already common with numerous examples in the x-rays in the decades that missions have been contributing to the standardized HEASoft package. Other examples include small data sets shared by \gls{VHE} experiments. In
+Such use cases are already common with many examples in the x-rays in the decades that missions have been contributing to the standardized HEASoft package. Other examples include small data sets shared by \gls{VHE} experiments. In
 \citep{2019A&A...625A..10N, 2022A&A...667A..36A}, groups of astronomers working on the Gammapy library had successfully
 analysed DL3 data taken on the Crab nebula by different facilities (\gls{MAGIC}, \gls{HESS}, \gls{VERITAS}, Fermi-LAT and \gls{HAWC}).
 A real statistical joint analysis has been performed to derive an emitting model of the Crab pulsar wind nebula over more
