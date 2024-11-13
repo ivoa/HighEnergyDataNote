@@ -25,7 +25,7 @@ Karl Kosack (CEA)\\
 Mireille Louys (CDS)\\
 Laurent Michel (Obs Strasbourg)\\
 Ada Nebot (CDS)\\
-Jutta Schnabel\\
+Jutta Schnabel (FAU)\\
 Fabian Schussler (CEA)\\
 and the HE discussion group at IVOA
 }
@@ -611,7 +611,7 @@ binned products. \gls{VODF} aims to follow or be compatible with existing \gls{I
 
 \gls{HE} data are typically multi-dimensional ({\em e.g.\/}, 2 spatial dimensions, time, energy, possibly polarisation) and may be complex and diverse at lower levels.  Therefore one may commonly find specific tools to process the data for a given facility, {\em e.g.\/}, CIAO for Chandra, \gls{SAS} for \gls{XMM-Newton}, or Gammapy for gamma-ray data, with a particular focus on Cherenkov data as foreseen by \gls{CTAO}.
 
-However, many tools in a high energy astrophysics data analysis package may perform common tasks in a mission-independent way and can work well with similar data from other facilities.  For example, one commonly needs to be able to filter and project the multi-dimensional data to select specific data subsets with manageable sizes and eliminate extraneous data.  Some tool sets include built-in generic filtering and binning capabilities so that a general purpose region filtering and binning syntax is available to the end user.  Examples include the HEASoft package\footnote{\url{https://https://heasarc.gsfc.nasa.gov/docs/software/heasoft/}} (enabled by the OGIP standards mentioned above), Gammapy\footnote{\url{https://gammapy.org/}}, Gamma-ray Data Tools (GDT)\footnote{\url{https://astro-gdt.readthedocs.io/}}, etc.  
+However, many tools in a high energy astrophysics data analysis package may perform common tasks in a mission-independent way and can work well with similar data from other facilities.  For example, one commonly needs to be able to filter and project the multi-dimensional data to select specific data subsets with manageable sizes and eliminate extraneous data.  Some tool sets include built-in generic filtering and binning capabilities so that a general purpose region filtering and binning syntax is available to the end user.  Examples include the HEASoft package\footnote{\url{https://https://heasarc.gsfc.nasa.gov/docs/software/heasoft/}} (enabled by the OGIP standards mentioned above), Gammapy\footnote{\url{https://gammapy.org/}}, Gamma-ray Data Tools (GDT)\footnote{\url{https://astro-gdt.readthedocs.io/}}, etc.
 
 A high energy astrophysics data analysis package typically includes tools that apply or re-apply instrumental calibrations to the data, and as described above these may be observatory-specific.  More general algorithms ({\em e.g.\/}, source detection) and utility tools ({\em e.g.\/}, extract an observed spectrum from a region surrounding a source) are applied to calibrated data to extract data subsets that can then be fed into modeling tools ({\em e.g.\/}, Xspec, Sherpa, or Gammapy) together with the appropriate instrumental responses (\gls{IRF}s, or \gls{RMF}s and \gls{ARF}s) to derive physical quantities.  Since instrumental responses are often designed to be compliant with widely adopted standards, the tools that apply these responses in many cases will interoperate with other datasets that use the same standards.
 
@@ -775,8 +775,8 @@ The develoment of the \gls{IVOA} Provenance Data Model \citep{2020ivoa.spec.0411
 
 \subsubsection{VOEvent}
 
-Source variability and observations of transient are common in the \gls{HE} domain, and as such, handling of alerts is generally including in the requirements of \gls{HE} observatories. Alerts are both sent and received by \gls{HE} observatories. The \gls{IVOA} recommendation VOEvent \citep{2017ivoa.spec.0320S} is thus of interest to the \gls{HE} domain.  This standard has been part of the decades-long success of of the General Coordinates Network (GCN)\footnote{\url{https://gcn.nasa.gov/}}, an alert system first created in the 1990's for BATSE \citep{1995Ap&SS.231..235B} that has been through a number of technology and standards refreshes.  See also \S~\ref{sec:voevent_he}. 
- 
+Source variability and observations of transient are common in the \gls{HE} domain, and as such, handling of alerts is generally including in the requirements of \gls{HE} observatories. Alerts are both sent and received by \gls{HE} observatories. The \gls{IVOA} recommendation VOEvent \citep{2017ivoa.spec.0320S} is thus of interest to the \gls{HE} domain.  This standard has been part of the decades-long success of of the General Coordinates Network (GCN)\footnote{\url{https://gcn.nasa.gov/}}, an alert system first created in the 1990's for BATSE \citep{1995Ap&SS.231..235B} that has been through a number of technology and standards refreshes.  See also \S~\ref{sec:voevent_he}.
+
 
 
 \subsubsection{Measurements}
@@ -1030,7 +1030,7 @@ dereferencable URLs or alternatively to different fragments of the same derefere
 
 \subsection{VOEvent modernization}\label{sec:voevent_he}
 
-The modern GCN is exploring new standards more compatible with modern event brokers such as Kafka. This includes defining metadata serialization in formats such as JSON and new schema\footnote{\url{https://gcn.nasa.gov/docs/notices/schema}} to describe how to use them.  This interest group should actively engage the growing community of projects publishing transient alerts through systems that have outgrown the VOEvent standard.  
+The modern GCN is exploring new standards more compatible with modern event brokers such as Kafka. This includes defining metadata serialization in formats such as JSON and new schema\footnote{\url{https://gcn.nasa.gov/docs/notices/schema}} to describe how to use them.  This interest group should actively engage the growing community of projects publishing transient alerts through systems that have outgrown the VOEvent standard.
 
 %\todo[inline]{To be completed: show an example ?}
 
