@@ -915,10 +915,11 @@ We also note that some properties are energy dependent, such as the Spatial Cove
 
 %\todo[inline]{TODO: show a table with all reused terms , and provide an example}
 
-Mandatory terms in ObsCore may be for example:
+Terms in ObsCore may be filled in the following way for example, considering a \gls{CTAO} DL3 dataset:
 
 \begin{itemize}
-    \item dataproduct\_subtype = DL3, maybe specific data format (\gls{VODF})
+    \item dataproduct_type = event
+    \item dataproduct\_subtype = DL3, maybe specific data format (e.g. \gls{VODF})
     \item calib\_level = between 1 and 2
     \item obs\_collection could contain many details : obs\_type (calib, science), obs\_mode (subarray
 configuration), pointing\_mode, tracking\_type, event\_type, event\_cuts, analysis\_type…
@@ -933,33 +934,33 @@ configuration), pointing\_mode, tracking\_type, event\_type, event\_cuts, analys
 
 \subsubsection{Metadata re-interpretation for the HE context}
 
-\paragraph{observation\_id}
+\paragraph{obs\_id}
 In the current definition of ObsCore, the data product collects data from one or several observations. The same happens in \gls{HE} context.
 
 \paragraph{access\_ref, access\_format}
 The initial role of this metadata was to hold the access\_url allowing data access.
 Depending on the packaging of the event bundle in one compact format (\gls{OGIP}, \gls{GADF}, tar ball, ...)
-or as different files available independently in various urls, a datalink pointer can be used for accessing the various parts of \gls{IRF}s, background maps, etc.
+or as different files available independently in various urls, a datalink pointer may be used for accessing the various parts of \gls{IRF}s, background maps, etc.
 Then in such a case the value for access\_format should be "application/x-votable+xml;content=datalink". The format itself of the data file is then given by the datalink parameter "content-type".
 See next section \ref{sec:datalink}.
 
 \paragraph{o\_ucd}
-For the even-list table, we can consider all measures stored in columns values have been observed .
-The nature of items along time, position and energy axis are identifed in Obscore with ucd as 'time', 'pos.eq.*', 'em.*'
+For the even-list table, we can consider that all measures stored in column values have been observed.
+The nature of items along time, position and energy axis are identifed in Obscore with UCD as 'time', 'pos.eq.*', 'em.*'
 and counted as t\_xel, s\_xel1, s\_xel2, em\_xel which correspond to the number of rows/events candidates observed.
 
 The signal observed is the result of event counting and would be PHA (Pulse height amplitude at detector level) or a number of counts for photons or particles, or a flux, etc.., depending on the data calibration level considered.
 ObsCore uses o\_ucd to characterise the nature of the measure.
-Various UCDs are used for that: o\_ucd=phys.count, phot.count, phot.flux, etc. there is currently no UCD defined for a raw measure like PulseHeightAmplitude, but if needed this can be requested for addition in the UCDList vocabulary. See VEP-UCD-15\_pulseheight.txt proposed at \url{'https://voparis-gitlab.obspm.fr/vespa/ivoa-standards/semantics/vep-ucd/-/blob/master/'}.
+Various UCDs are used for that: o\_ucd=phys.count, phot.count, phot.flux, etc. there is currently no UCD defined for a raw measure like PulseHeightAmplitude, but if needed this can be requested for addition in the UCDList vocabulary\footnote{See VEP-UCD-15\_pulseheight.txt proposed at \url{'https://voparis-gitlab.obspm.fr/vespa/ivoa-standards/semantics/vep-ucd/-/blob/master/'}}.
 
 Note that these parameters vary between the dataset of calib\_level of 1 (Raw) to the a more advanced data products (calib\_level 2 or 3), which are filtered and rebinned from the original raw event-list.
 
 
-\subsubsection{Proposed additions}
+\subsubsection{Possible additions}
 
 \paragraph{ev\_number}
 The event-list contains a number of rows, representing detections candidates, that have no metadata keyword yet in Obscore.
-We propose 'ev\_number' to record this.
+We could propose 'ev\_number' to record this.
 In fact the t\_xel, s\_xel1 and s\_xel2, em\_xel elements do not apply for an event-list in raw count as it has not been binned yet.
 
 \paragraph{Adding MIME-type to access\_format table}
